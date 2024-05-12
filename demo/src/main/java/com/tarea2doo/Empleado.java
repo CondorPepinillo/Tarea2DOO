@@ -1,8 +1,8 @@
 package com.tarea2doo;
 
-public class Empleado {
+public class Empleado implements Invitable {
     private String id;
-    protected String nombre;
+    private String nombre;
     private String apellido;
     private String correo;
 
@@ -13,4 +13,8 @@ public class Empleado {
         this.correo = correo;
     }
 
+    @Override
+    public void invitar() {
+        //Implementar lógica de la invitación
+    }
 }
