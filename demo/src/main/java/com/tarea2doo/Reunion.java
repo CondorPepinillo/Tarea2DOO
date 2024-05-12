@@ -2,6 +2,7 @@ package com.tarea2doo;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -12,4 +13,5 @@ public abstract class Reunion {
     Instant horaInicio = Instant.now();
     Instant horaFin = Instant.now();
 
+    abstract ArrayList<Empleado> obtenerAsistencia();
 }
