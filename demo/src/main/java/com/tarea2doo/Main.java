@@ -8,15 +8,20 @@ public class Main {
         depa1.addEmpleado(empleado1);
         System.out.println(depa1.obtenerCantidadEmpleados());
         ReunionPresencial reunion1 = new ReunionPresencial("sala1");
-        reunion1.iniciar();
-        reunion1.getTipoReunion();
+
+        Organizador orga1 = new Organizador();
+        Reunion reunion = orga1.organizarReunion();
+
+        orga1.iniciarReunion(reunion);
+
 
         try {
             Thread.sleep(10000); // Pausa durante 10 segundos (1 segundo = 1000 milisegundos)
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        reunion1.finalizar();
-        reunion1.calcularTiempoReal();
+
+        orga1.finalizarReunion(reunion);
+        orga1.calcularTiempoRealReunion(reunion);
     }
 }

@@ -41,7 +41,6 @@ public class Organizador {
         String invitados = scanner.next();
         String[] listaInvitados = invitados.split(",");
         for (String invitado : listaInvitados) {
-            reunion.invitar(new Empleado(invitado));
         }
 
         return reunion;
@@ -49,5 +48,11 @@ public class Organizador {
 
     public void iniciarReunion(Reunion reunion) {
         reunion.iniciar();
+    }
+    public void finalizarReunion(Reunion reunion) {
+        reunion.finalizar();
+    }
+    public void calcularTiempoRealReunion(Reunion reunion){
+        reunion.calcularTiempoReal();
     }
 }
