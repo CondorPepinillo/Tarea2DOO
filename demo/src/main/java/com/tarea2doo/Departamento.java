@@ -13,15 +13,22 @@ public class Departamento implements Invitable{
 
     public void addEmpleado(Empleado empleado){
         empleadosDelDepartamento.add(empleado);
-        cantidadEmpleados += 1;
+        cantidadEmpleados++;
     }
 
-    public int obtenerCantidadEmpleados(){
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getCantidadEmpleados() {
         return cantidadEmpleados;
     }
 
     @Override
     public void invitar() {
-        //Implementar lógica de la invitación
+        System.out.println("Invitando a los empleados del departamento " + nombre);
+        for (Empleado empleado : empleadosDelDepartamento) {
+            empleado.invitar();
+        }
     }
 }

@@ -13,8 +13,24 @@ public class Empleado implements Invitable {
         this.correo = correo;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
     @Override
     public void invitar() {
-        //Implementar lógica de la invitación
+        System.out.println(nombre + " " + apellido + " " + correo);
     }
 }
