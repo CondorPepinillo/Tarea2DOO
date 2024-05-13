@@ -4,7 +4,11 @@ import java.util.List;
 
 public class ReunionPresencial extends Reunion {
     private String sala;
-    
+
+    public ReunionPresencial(String sala){
+        this.sala = sala;
+    }
+
     @Override
     public List obtenerAsistencias() {
         // Implementar lógica

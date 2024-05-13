@@ -2,6 +2,8 @@ package com.tarea2doo;
 
 import java.time.Instant;
 
-public class Invitacion {
+public class Invitacion{
     Instant hora = Instant.now();
+
+
 }

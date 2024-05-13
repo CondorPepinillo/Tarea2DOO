@@ -4,6 +4,11 @@ import java.util.List;
 
 public class ReunionVirtual extends Reunion {
     private String enlace;
+
+    public ReunionVirtual(String enlace){
+        this.enlace = enlace;
+    }
+
     @Override
     public List obtenerAsistencias() {
         // Implementar lógica
