@@ -1,7 +1,8 @@
 package com.tarea2doo;
-
 import java.time.Instant;
 import java.util.List;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class ReunionVirtual extends Reunion {
     private String enlace;
@@ -50,16 +51,21 @@ public class ReunionVirtual extends Reunion {
     @Override
     public void iniciar() {
         horaInicio = Instant.now();
+        ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaInicio, zoneId); // Convierte a la zona horaria del sistema
+
         timestampini = horaInicio.getEpochSecond();
-        System.out.println("Reunion iniciada");
-        // Implementar lógica
+        System.out.println("Reunion iniciada a las: " + zonedDateTime);
     }
 
     @Override
     public void finalizar() {
         horaFin = Instant.now();
+        ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaFin, zoneId); // Convierte a la zona horaria del sistema
+
         timestampfin = horaFin.getEpochSecond();
-        System.out.println("Reunion finalizada");
+        System.out.println("Reunion finalizada a las: " + zonedDateTime);
         // Implementar lógica
     }
 }
