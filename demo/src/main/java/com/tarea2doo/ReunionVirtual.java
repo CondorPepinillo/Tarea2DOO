@@ -8,9 +8,15 @@ public class ReunionVirtual extends Reunion {
     private String enlace;
     static long timestampini;
     static long timestampfin;
+    static tipoReunion tipo;
 
-    public ReunionVirtual(String enlace){
+    public ReunionVirtual(String enlace, tipoReunion tipo){
         this.enlace = enlace;
+        this.tipo = tipo;
+    }
+    @Override
+    public void getTipoReunion(){
+        System.out.println("la reunion es de tipo: " + tipo);
     }
 
     @Override

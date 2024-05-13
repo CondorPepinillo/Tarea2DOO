@@ -8,9 +8,16 @@ public class ReunionPresencial extends Reunion {
     private String sala;
     static long timestampini;
     static long timestampfin;
+    static tipoReunion tipo;
 
-    public ReunionPresencial(String sala){
+    public ReunionPresencial(String sala, tipoReunion tipo){
         this.sala = sala;
+        this.tipo = tipo;
+    }
+
+    @Override
+    public void getTipoReunion(){
+        System.out.println("la reunion es de tipo: " + tipo);
     }
 
     @Override

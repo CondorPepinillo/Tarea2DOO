@@ -12,6 +12,8 @@ public abstract class Reunion {
     Instant horaInicio = Instant.now();
     Instant horaFin = Instant.now();
 
+    public abstract void getTipoReunion();
+
     public abstract List obtenerAsistencias();
 
     public abstract List obtenerAusencias();

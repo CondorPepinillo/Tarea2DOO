@@ -7,8 +7,10 @@ public class Main {
         System.out.println(depa1.obtenerCantidadEmpleados());
         depa1.addEmpleado(empleado1);
         System.out.println(depa1.obtenerCantidadEmpleados());
-        ReunionPresencial reunion1 = new ReunionPresencial("sala1");
+        ReunionPresencial reunion1 = new ReunionPresencial("sala1", tipoReunion.TECNICA);
         reunion1.iniciar();
+        reunion1.getTipoReunion();
+
         try {
             Thread.sleep(10000); // Pausa durante 10 segundos (1 segundo = 1000 milisegundos)
         } catch (InterruptedException e) {
