@@ -31,6 +31,6 @@ public class Empleado implements Invitable {
 
     @Override
     public void invitar() {
-        System.out.println(nombre + " " + apellido + " " + correo);
+
     }
 }

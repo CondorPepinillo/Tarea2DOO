@@ -4,6 +4,7 @@ import java.time.Instant;
 
 public class Retraso extends Asistencia{
     Instant hora =Instant.now();
+
     public Instant getHora() {
         return hora;
     }
