@@ -40,9 +40,8 @@ public class ReunionVirtual extends Reunion {
     }
 
     @Override
-    public float calcularTiempoReal() {
+    public void calcularTiempoReal() {
         // Implementar lógica
-        return 0;
     }
 
     @Override

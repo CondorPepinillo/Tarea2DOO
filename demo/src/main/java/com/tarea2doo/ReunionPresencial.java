@@ -1,9 +1,12 @@
 package com.tarea2doo;
 
+import java.time.Instant;
 import java.util.List;
 
 public class ReunionPresencial extends Reunion {
     private String sala;
+    static long timestampini;
+    static long timestampfin;
 
     public ReunionPresencial(String sala){
         this.sala = sala;
@@ -40,18 +43,23 @@ public class ReunionPresencial extends Reunion {
     }
 
     @Override
-    public float calcularTiempoReal() {
-        // Implementar lógica
-        return 0;
+    public void calcularTiempoReal() {
+        System.out.println("la reunion duro " + (timestampfin - timestampini) +"segundos");
     }
 
     @Override
     public void iniciar() {
+        horaInicio = Instant.now();
+        timestampini = horaInicio.getEpochSecond();
+        System.out.println("Reunion iniciada");
         // Implementar lógica
     }
 
     @Override
     public void finalizar() {
+        horaFin = Instant.now();
+        timestampfin = horaFin.getEpochSecond();
+        System.out.println("Reunion finalizada");
         // Implementar lógica
     }
 }
