@@ -1,9 +1,12 @@
 package com.tarea2doo;
 
+import java.time.Instant;
 import java.util.List;
 
 public class ReunionVirtual extends Reunion {
     private String enlace;
+    static long timestampini;
+    static long timestampfin;
 
     public ReunionVirtual(String enlace){
         this.enlace = enlace;
@@ -41,16 +44,22 @@ public class ReunionVirtual extends Reunion {
 
     @Override
     public void calcularTiempoReal() {
-        // Implementar lógica
+        System.out.println("la reunion duro " + (timestampfin - timestampini) +"segundos");
     }
 
     @Override
     public void iniciar() {
+        horaInicio = Instant.now();
+        timestampini = horaInicio.getEpochSecond();
+        System.out.println("Reunion iniciada");
         // Implementar lógica
     }
 
     @Override
     public void finalizar() {
+        horaFin = Instant.now();
+        timestampfin = horaFin.getEpochSecond();
+        System.out.println("Reunion finalizada");
         // Implementar lógica
     }
 }
