@@ -1,5 +1,6 @@
 package com.tarea2doo;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -10,15 +11,32 @@ public class ReunionPresencial extends Reunion {
     static long timestampfin;
     static tipoReunion tipo;
 
-    public ReunionPresencial(String sala, tipoReunion tipo){
+
+    public ReunionPresencial(String sala){
         this.sala = sala;
-        this.tipo = tipo;
     }
 
     @Override
-    public void getTipoReunion(){
-        System.out.println("la reunion es de tipo: " + tipo);
-    }
+    public  void setFecha(String fecha){};
+    @Override
+    public  void setHora(String hora){};
+    @Override
+    public  void setDuracionPrevista(String duracionPrevista){};
+    @Override
+    public  void setTipoReunion(int tipo){
+        switch (tipo){
+            case 1:
+                this.tipo = tipoReunion.TECNICA;
+            case 2:
+                this.tipo = tipoReunion.MARKETING;
+            case 3:
+                this.tipo = tipoReunion.OTRO;
+        }
+    };
+    @Override
+    public  void getTipoReunion(){
+        System.out.println(tipo);
+    };
 
     @Override
     public List obtenerAsistencias() {

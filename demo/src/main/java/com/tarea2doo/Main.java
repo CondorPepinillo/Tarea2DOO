@@ -7,7 +7,7 @@ public class Main {
         System.out.println(depa1.obtenerCantidadEmpleados());
         depa1.addEmpleado(empleado1);
         System.out.println(depa1.obtenerCantidadEmpleados());
-        ReunionPresencial reunion1 = new ReunionPresencial("sala1", tipoReunion.TECNICA);
+        ReunionPresencial reunion1 = new ReunionPresencial("sala1");
         reunion1.iniciar();
         reunion1.getTipoReunion();
 

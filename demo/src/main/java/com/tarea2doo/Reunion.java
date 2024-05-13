@@ -12,7 +12,16 @@ public abstract class Reunion {
     Instant horaInicio = Instant.now();
     Instant horaFin = Instant.now();
 
+    public abstract void setFecha(String fecha);
+
+    public abstract void setHora(String hora);
+
+    public abstract void setDuracionPrevista(int duracionPrevista);
+
+    public abstract void setTipoReunion(int tipoReunion);
+
     public abstract void getTipoReunion();
+
 
     public abstract List obtenerAsistencias();
 

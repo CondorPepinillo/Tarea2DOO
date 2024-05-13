@@ -10,14 +10,37 @@ public class ReunionVirtual extends Reunion {
     static long timestampfin;
     static tipoReunion tipo;
 
-    public ReunionVirtual(String enlace, tipoReunion tipo){
+    public ReunionVirtual(String enlace){
         this.enlace = enlace;
-        this.tipo = tipo;
     }
+
+    @Override
+    public void setFecha(String fecha){
+
+    };
+    @Override
+    public  void setHora(String hora){
+
+    };
+    @Override
+    public  void setDuracionPrevista(String duracionPrevista){
+
+    };
+    @Override
+    public  void setTipoReunion(int tipo){
+        switch (tipo){
+            case 1:
+                this.tipo = tipoReunion.TECNICA;
+            case 2:
+                this.tipo = tipoReunion.MARKETING;
+            case 3:
+                this.tipo = tipoReunion.OTRO;
+        }
+    };
     @Override
     public void getTipoReunion(){
-        System.out.println("la reunion es de tipo: " + tipo);
-    }
+        System.out.println(tipo);
+    };
 
     @Override
     public List obtenerAsistencias() {
