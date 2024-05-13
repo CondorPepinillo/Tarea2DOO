@@ -21,7 +21,7 @@ public class ReunionPresencial extends Reunion {
     @Override
     public  void setHora(String hora){};
     @Override
-    public  void setDuracionPrevista(String duracionPrevista){};
+    public  void setDuracionPrevista(int duracionPrevista){};
     @Override
     public  void setTipoReunion(int tipo){
         switch (tipo){

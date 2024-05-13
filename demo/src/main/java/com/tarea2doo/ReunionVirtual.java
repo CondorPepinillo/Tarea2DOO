@@ -23,7 +23,7 @@ public class ReunionVirtual extends Reunion {
 
     };
     @Override
-    public  void setDuracionPrevista(String duracionPrevista){
+    public  void setDuracionPrevista(int duracionPrevista){
 
     };
     @Override
