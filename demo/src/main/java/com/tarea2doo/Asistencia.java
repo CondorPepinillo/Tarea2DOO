@@ -1,8 +1,14 @@
 package com.tarea2doo;
 
-import java.util.ArrayList;
-
 public class Asistencia {
-    static ArrayList<Empleado> empleadosEnReunion = new ArrayList<>();
+    private final Empleado empleado;
+
+    public Asistencia(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
 
 }
