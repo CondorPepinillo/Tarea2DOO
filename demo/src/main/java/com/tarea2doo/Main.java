@@ -1,4 +1,8 @@
 package com.tarea2doo;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
+import java.time.LocalTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,13 +11,16 @@ public class Main {
         System.out.println(depa1.getCantidadEmpleados());
         depa1.addEmpleado(empleado1);
         System.out.println(depa1.getCantidadEmpleados());
-        ReunionPresencial reunion1 = new ReunionPresencial("sala1");
+        Date hoy = new Date();
+        Instant horaPrevista = Instant.now();
+        LocalTime inicio = LocalTime.of(9, 0); // Hora de inicio
+        LocalTime fin = LocalTime.of(12, 30);
+        Duration duracion = Duration.between(inicio, fin);
 
-        Organizador orga1 = new Organizador();
-        Reunion reunion = orga1.organizarReunion();
 
-        orga1.iniciarReunion(reunion);
+        ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
 
+        reunion1.iniciar();
 
         try {
             Thread.sleep(10000); // Pausa durante 10 segundos (1 segundo = 1000 milisegundos)
@@ -21,7 +28,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        orga1.finalizarReunion(reunion);
-        orga1.calcularTiempoRealReunion(reunion);
+        reunion1.finalizar();
+        reunion1.calcularTiempoReal();
     }
 }

@@ -2,40 +2,85 @@ package com.tarea2doo;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Reunion {
-    Date fecha = new Date();
-    Instant horaPrevista = Instant.now();
-    Duration duracionPrevista = Duration.ofHours(1);
-    Instant horaInicio = Instant.now();
-    Instant horaFin = Instant.now();
+    private final Date fecha;
+    private final Instant horaPrevista;
+    private final Duration duracionPrevista;
+    private Instant horaInicio;
+    private Instant horaFin;
 
-    public abstract void setFecha(String fecha);
+    static long timestampini;
+    static long timestampfin;
+    static tipoReunion tipo;
 
-    public abstract void setHora(String hora);
+    public  Reunion(tipoReunion tipo, Date fecha, Instant horaPrevista, Duration duracionPrevista){
+        this.tipo = tipo;
+        this.fecha = fecha;
+        this.horaPrevista = horaPrevista;
+        this.duracionPrevista = duracionPrevista;
+    }
 
-    public abstract void setDuracionPrevista(int duracionPrevista);
 
-    public abstract void setTipoReunion(int tipoReunion);
+    public tipoReunion getTipoReunion(){
+        return  tipo;
+    };
 
-    public abstract void getTipoReunion();
+
+    public List obtenerAsistencias() {
+        return null;
+    }
 
 
-    public abstract List obtenerAsistencias();
+    public List obtenerAusencias() {
+        // Implementar lógica
+        return null;
+    }
 
-    public abstract List obtenerAusencias();
 
-    public abstract List obtenerRetrasos();
+    public List obtenerRetrasos() {
+        // Implementar lógica
+        return null;
+    }
 
-    public abstract int obtenerTotalAsistencia();
 
-    public abstract float obtenerPorcentajeAsistencia();
+    public int obtenerTotalAsistencia() {
+        // Implementar
+        return obtenerAsistencias().size();
+    }
 
-    public abstract void calcularTiempoReal();
 
-    public abstract void iniciar();
+    public float obtenerPorcentajeAsistencia() {
+        // Implementar lógica
+        return 0;
+    }
 
-    public abstract void finalizar();
+
+    public void calcularTiempoReal() {
+        System.out.println("la reunion duro " + (timestampfin - timestampini) +"segundos");
+    }
+
+    public void iniciar() {
+        horaInicio = Instant.now();
+        ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaInicio, zoneId); // Convierte a la zona horaria del sistema
+
+        timestampini = horaInicio.getEpochSecond();
+        System.out.println("Reunion iniciada a las: " + zonedDateTime);
+    }
+
+
+    public void finalizar() {
+        horaFin = Instant.now();
+        ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaFin, zoneId); // Convierte a la zona horaria del sistema
+
+        timestampfin = horaFin.getEpochSecond();
+        System.out.println("Reunion finalizada a las: " + zonedDateTime);
+
+    }
 }
