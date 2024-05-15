@@ -143,9 +143,9 @@ public abstract class Reunion {
      * @param asistencias
      */
     public void iniciar(List<Asistencia> asistencias) {
+        horaInicio = Instant.now(); // Define la hora de inicio de la reunión
         ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
         ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaInicio, zoneId); // Convierte a la zona horaria del sistema
-        horaInicio = Instant.now(); // Define la hora de inicio de la reunión
         this.asistencias = asistencias; // Asigna la lista de asistencias
         timestampini = horaInicio.getEpochSecond(); // Obtiene el timestamp de inicio de la reunión
         System.out.println("Reunion iniciada a las: " + zonedDateTime); // Imprime la hora de inicio de la reunión
@@ -155,9 +155,9 @@ public abstract class Reunion {
      * Finaliza la reunión
      */
     public void finalizar() {
+        horaFin = Instant.now(); // Define la hora de fin de la reunión
         ZoneId zoneId = ZoneId.systemDefault(); // Obtiene la zona horaria del sistema
         ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(horaFin, zoneId); // Convierte a la zona horaria del sistema
-        horaFin = Instant.now(); // Define la hora de fin de la reunión
         timestampfin = horaFin.getEpochSecond(); // Obtiene el timestamp de fin de la reunión
         System.out.println("Reunion finalizada a las: " + zonedDateTime); // Imprime la hora de fin de la reunión
     }
