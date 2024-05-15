@@ -69,4 +69,5 @@ public class Empleado implements Invitable {
         System.out.println("Invitado: " + nombre + " " + apellido + " " + correo); // Invitar a un empleado a una reunión
         reunion.addInvitado(new Invitacion(reunion, this)); // Invitar a un empleado a una reunión
     }
+
 }
