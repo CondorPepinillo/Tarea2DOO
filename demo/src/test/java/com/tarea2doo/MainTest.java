@@ -19,6 +19,16 @@ class MainTest {
     Empleado empleado6 = new Empleado("3", "eduardo", "tapia", "eduTap@udec.cl");
 
     Departamento depa1 = new Departamento("depa1");
+
+    Date hoy = new Date();
+    Instant horaPrevista = Instant.now();
+
+    LocalTime inicio = LocalTime.of(13, 0); // Hora de inicio
+    LocalTime fin = LocalTime.of(14, 30);
+    Duration duracion = Duration.between(inicio, fin);
+
+    ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
+
     @Test
     void CantidadDeEmpleadosCaso3Empleados(){
         depa1.addEmpleado(empleado4);
@@ -30,27 +40,10 @@ class MainTest {
 
     @Test
     void getTipoReunion(){
-        Date hoy = new Date();
-        Instant horaPrevista = Instant.now();
-
-        LocalTime inicio = LocalTime.of(13, 0); // Hora de inicio
-        LocalTime fin = LocalTime.of(14, 30);
-        Duration duracion = Duration.between(inicio, fin);
-
-        ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
-
         assertEquals(tipoReunion.MARKETING, reunion1.getTipoReunion());
     }
     @Test
     void PorcentajeAsistencias(){
-        Date hoy = new Date();
-        Instant horaPrevista = Instant.now();
-
-        LocalTime inicio = LocalTime.of(13, 0); // Hora de inicio
-        LocalTime fin = LocalTime.of(14, 30);
-        Duration duracion = Duration.between(inicio, fin);
-
-        ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
 
         empleado1.invitar(reunion1);
         empleado2.invitar(reunion1);
