@@ -29,7 +29,7 @@ public class Invitacion{
      * @return
      */
     public Instant getHora() {
-        return hora;
+        return hora; // Hora de la invitación
     }
 
     /**
@@ -37,7 +37,7 @@ public class Invitacion{
      * @return
      */
     public Invitable getInvitable() {
-        return invitable;
+        return invitable; // Invitable al que se invita
     }
 
     /**
@@ -45,6 +45,6 @@ public class Invitacion{
      * @return
      */
     public Reunion getReunion() {
-        return reunion;
+        return reunion; // Reunión a la que se invita
     }
 }

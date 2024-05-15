@@ -22,6 +22,7 @@ public abstract class Reunion {
     private Instant horaFin; // Hora de fin de la reunión
     private List<Invitacion> invitados; // Lista de invitados a la reunión
     private List<Asistencia> asistencias; // Lista de asistencias a la reunión
+    private List<Ausencia> ausencias; // Lista de ausencias a la reunión
 
     static long timestampini; // Timestamp de inicio de la reunión
     static long timestampfin; // Timestamp de fin de la reunión
@@ -52,7 +53,21 @@ public abstract class Reunion {
         return  tipo;
     };
 
+    /**
+     * Agrega un invitado a la reunión
+     * @param invitado
+     */
+    public void addInvitado(Invitacion invitado) {
+        invitados.add(invitado); // Agrega el invitado a la lista de invitados
+    }
 
+    /**
+     * Devuelve la lista de invitados a la reunión
+     * @return
+     */
+    public List<Invitacion> getInvitados() {
+        return invitados; // Devuelve la lista de invitados
+    }
 
     /**
      * Devuelve la lista de asistencias a la reunión
@@ -66,8 +81,19 @@ public abstract class Reunion {
      * Devuelve la lista de ausencias a la reunión
      * @return Lista de ausencias
      */
-    public List obtenerAusencias() {
-        return null; // FALTA IMPLEMENTAR
+    public List<Ausencia> obtenerAusencias() {
+        List<Invitable> asistentes = new ArrayList<>(); // Crea una lista de asistentes
+        for (Asistencia asistencia : obtenerAsistencias()) { // Recorre la lista de asistencias
+            asistentes.add(asistencia.getEmpleado()); // Agrega el asistente a la lista de asistentes
+        }
+
+        List<Ausencia> ausencias = new ArrayList<>(); // Crea una lista de ausencias
+        for (Invitacion invitacion : getInvitados()) { // Recorre la lista de invitados
+            if (!asistentes.contains(invitacion.getInvitable())) { // Verifica si el invitado no está en la lista de asistentes
+                ausencias.add(new Ausencia((Empleado) invitacion.getInvitable())); // Agrega la ausencia a la lista de ausencias
+            }
+        }
+        return ausencias; // Devuelve la lista de ausencias
     }
 
     /**
@@ -79,11 +105,17 @@ public abstract class Reunion {
     }
 
     /**
-     * Devuelve la cantidad de retrasos a la reunión
-     * @return Cantidad de retrasos
+     * Devuelve la cantidad total de retrasos a la reunión
+     * @return Cantidad total de retrasos
      */
-    public List obtenerRetrasos() {
-        return null; // FALTA IMPLEMENTAR
+    public List<Retraso> obtenerRetrasos() {
+        List<Retraso> retrasos = new ArrayList<>(); // Crea una lista de retrasos
+        for (Asistencia asistencia : asistencias) { // Recorre la lista de asistencias
+            if (asistencia instanceof Retraso) { // Verifica si la asistencia es un retraso
+                retrasos.add((Retraso) asistencia); // Agrega el retraso a la lista de retrasos                
+            }
+        }
+        return retrasos; // Devuelve la lista de retrasos
     }
 
     /**
@@ -91,7 +123,11 @@ public abstract class Reunion {
      * @return Porcentaje de asistencia
      */
     public float obtenerPorcentajeAsistencia() {
-        return 0; // FALTA IMPLEMENTAR
+        float totalInvitados = getInvitados().size(); // Obtiene la cantidad total de invitados
+        float totalAsistentes = obtenerTotalAsistencia(); // Obtiene la cantidad total de asistentes
+
+        float porcentajeAsistencias = (totalAsistentes / totalInvitados) * 100; // Calcula el porcentaje de asistencias
+        return porcentajeAsistencias; // Devuelve el porcentaje de asistencias
     }
 
 
@@ -132,22 +168,6 @@ public abstract class Reunion {
      */
     public Instant getHora() {
         return horaPrevista; // Devuelve la hora prevista de la reunión
-    }
-
-    /**
-     * Agrega un invitado a la reunión
-     * @param invitado
-     */
-    public void addInvitado(Invitacion invitado) {
-        invitados.add(invitado); // Agrega el invitado a la lista de invitados
-    }
-
-    /**
-     * Devuelve la lista de invitados a la reunión
-     * @return
-     */
-    public List<Invitacion> getInvitados() {
-        return invitados; // Devuelve la lista de invitados
     }
 
 }
