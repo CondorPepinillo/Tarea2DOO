@@ -39,10 +39,26 @@ class MainTest {
 
         ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
 
+        assertEquals(tipoReunion.MARKETING, reunion1.getTipoReunion());
+    }
+    @Test
+    void PorcentajeAsistencias(){
+        Date hoy = new Date();
+        Instant horaPrevista = Instant.now();
+
+        LocalTime inicio = LocalTime.of(13, 0); // Hora de inicio
+        LocalTime fin = LocalTime.of(14, 30);
+        Duration duracion = Duration.between(inicio, fin);
+
+        ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
+
         empleado1.invitar(reunion1);
         empleado2.invitar(reunion1);
         empleado3.invitar(reunion1);
 
+        depa1.addEmpleado(empleado4);
+        depa1.addEmpleado(empleado5);
+        depa1.addEmpleado(empleado6);
         depa1.invitar(reunion1);
 
         Asistencia asiste1 = new Asistencia(empleado1);
@@ -53,8 +69,7 @@ class MainTest {
 
         List<Asistencia> asistencias = reunion1.obtenerAsistencias();
 
-        assertEquals(tipoReunion.MARKETING, reunion1.getTipoReunion());
+        assertEquals("16,666668", String.format("%.6f", reunion1.obtenerPorcentajeAsistencia()));
     }
-    @Test
 
 }
