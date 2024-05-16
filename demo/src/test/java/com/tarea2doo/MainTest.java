@@ -69,5 +69,4 @@ class MainTest {
         Nota nota = new Nota("HOLA soy la Nota");
         assertEquals("HOLA soy la Nota", nota.getContenido());
     }
-
 }
