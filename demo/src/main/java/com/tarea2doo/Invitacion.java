@@ -5,7 +5,7 @@ import java.time.Instant;
 /**
  * Clase Invitacion
  * Esta clase define los atributos y métodos de una invitación.
- * Se encarga de gestionar la información de una invitación, como la hora, la reunión y el invitado.
+ * Se encarga de gestionar la información de una invitación, como la hora, la reunión y el invitado(junto a los datos de este).
  */
 public class Invitacion{
     private Instant hora;
@@ -52,6 +52,10 @@ public class Invitacion{
         return reunion; // Reunión a la que se invita
     }
 
+    /**
+     * Devuelve los datos de el empleado invitado
+     * @return DatosEmpleado
+     */
     public Empleado getDatosEmpleado(){
         return DatosEmpleado;
     }

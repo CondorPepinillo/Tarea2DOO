@@ -23,7 +23,7 @@ public abstract class Reunion {
     private List<Invitacion> invitados; // Lista de invitados a la reunión
     private List<Asistencia> asistencias; // Lista de asistencias a la reunión
     private List<Ausencia> ausencias; // Lista de ausencias a la reunión
-    private List<Nota> notas = new ArrayList<>();
+    private List<Nota> notas = new ArrayList<>(); //Lista de notas asociadas a la reunión
 
     static long timestampini; // Timestamp de inicio de la reunión
     static long timestampfin; // Timestamp de fin de la reunión
@@ -64,7 +64,7 @@ public abstract class Reunion {
 
     /**
      * Devuelve la lista de invitados a la reunión
-     * @return
+     * @return Lista de invitados
      */
     public List<Invitacion> getInvitados() {
         return invitados; // Devuelve la lista de invitados
@@ -163,6 +163,10 @@ public abstract class Reunion {
         System.out.println("Reunion finalizada a las: " + zonedDateTime); // Imprime la hora de fin de la reunión
     }
 
+    /**
+     * Devuelve la fecha prevista para la reunión
+     * @return fecha
+     */
     public Date getFecha(){
         return fecha;
     }
@@ -170,24 +174,40 @@ public abstract class Reunion {
 
     /**
      * Devuelve la hora prevista de la reunión
-     * @return
+     * @return horaPrevista
      */
     public Instant getHora() {
         return horaPrevista; // Devuelve la hora prevista de la reunión
     }
 
+    /**
+     * Devuelve la duración prevista de la reunión
+     * @return duracionPrevista
+     */
     public Duration getDuracionPrevista(){
         return duracionPrevista;
     }
 
+    /**
+     * Devuelve la hora a la que inicia la reunión
+     * @return horaInicio
+     */
     public Instant getHoraInicio(){
         return horaInicio;
     }
 
+    /**
+     * Devuelve la hora a la que finaliza de la reunión
+     * @return horaFin
+     */
     public Instant getHoraFin(){
         return horaFin;
     }
 
+    /**
+     * Devuelve la lista con las notas asociadas a la reunión
+     * @return notas
+     */
     public List<Nota> getNotas(){
         return notas;
     };

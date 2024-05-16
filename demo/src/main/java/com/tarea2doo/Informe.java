@@ -9,6 +9,12 @@ import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.SplittableRandom;
 
+/**
+ * Clase Informe
+ * Esta clase define los atributos y métodos de un informe.
+ * Se encarga de gestionar la información presente en el informes además de crearlos.
+ * La informacion presente en los informes con respecto a la reunion es: sala o enlace, fecha, hora, y duración previstas, notas relacionadas a la reunión, inicio, termino, y duración real de la reunión y empleados invitados, asistentes, retrasados, y ausentes.
+ */
 public class Informe {
     String DatosIniReunion ="";
     String Notas="";
@@ -20,9 +26,16 @@ public class Informe {
     String Retrasados="";
     String Ausencias="";
 
+    /**
+     * Constructor de la clase Informe.
+     * @param reunion reunión de la cual se hara el informe
+     * @param path Ruta en la cual se creara el INFORME.txt
+     */
     public Informe(Reunion reunion, String path){
         File file = new File(path);
-
+        /**
+         * Datos de la planeación de la reunion: sala o enlace, tipo de reunion(MARKETING, TECNICA U OTRA), fecha, hora prevista y duracion prevista
+         */
         if (reunion instanceof ReunionPresencial) {
             DatosIniReunion += "SALA: "+ ((ReunionPresencial) reunion).getSala() + "\n" +
                     "TIPO DE REUNION: " + reunion.getTipoReunion() + "\n" +
@@ -38,34 +51,53 @@ public class Informe {
                     "DURACION PREVISTA: " + reunion.getDuracionPrevista() + "\n";
         }
 
+        /**
+         * Se agregan todas las notas que esten relacionadas a la reunión
+         */
         for(int i = 0; i < reunion.getNotas().size(); i++){
             Notas += reunion.getNotas().get(i).getContenido() + "\n";
         }
 
+        /**
+         * Momentos en los que realmente comenzo y terminó la reunion ademas de cuanto duró.
+         */
         horaDeInicio += reunion.getHoraInicio().atZone(ZoneOffset.systemDefault());
         horaDeFin += reunion.getHoraFin().atZone(ZoneOffset.systemDefault());
         duracionReunion += "la reunion duro " + (reunion.timestampfin - reunion.timestampini) + "segundos";
 
+        /**
+         * La informacion de los invitados a la reunión.
+         */
         for(int i = 0; i < reunion.getInvitados().size(); i++){
             Invitados += reunion.getInvitados().get(i).getDatosEmpleado().getId() +" "+ reunion.getInvitados().get(i).getDatosEmpleado().getNombre() +" "+
                     reunion.getInvitados().get(i).getDatosEmpleado().getApellido() +" "+ reunion.getInvitados().get(i).getDatosEmpleado().getCorreo()+ "\n";
         }
 
+        /**
+         * La informacion de los que asistieron a la reunión
+         */
         for(int i = 0; i < reunion.obtenerAsistencias().size(); i++){
             Asistentes += reunion.obtenerAsistencias().get(i).getEmpleado().getId() + " " + reunion.obtenerAsistencias().get(i).getEmpleado().getNombre() +" "+
                     reunion.obtenerAsistencias().get(i).getEmpleado().getApellido() + " " + reunion.obtenerAsistencias().get(i).getEmpleado().getCorreo() + "\n";
         }
 
+        /**
+         * La informacion de los que llegaron atrasados a la reunión.
+         */
         for(int i = 0; i < reunion.obtenerRetrasos().size(); i++){
             Retrasados += reunion.obtenerRetrasos().get(i).getEmpleado().getId() + " " + reunion.obtenerRetrasos().get(i).getEmpleado().getNombre() +" "+
                     reunion.obtenerRetrasos().get(i).getEmpleado().getApellido() + " " + reunion.obtenerRetrasos().get(i).getEmpleado().getCorreo() + "\n";
         }
-
+        /**
+         * La informacion de los que se ausentaron de la reunión
+         */
         for (int i = 0; i < reunion.obtenerAusencias().size(); i++){
             Ausencias += reunion.obtenerAusencias().get(i).getEmpleado().getId() + " " + reunion.obtenerAusencias().get(i).getEmpleado().getNombre() +" "+
                     reunion.obtenerAusencias().get(i).getEmpleado().getApellido() + " " + reunion.obtenerAusencias().get(i).getEmpleado().getCorreo() + "\n";
         }
-
+        /**
+         * Escribiendo en el informe todo lo antes dicho
+         */
         try {
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
