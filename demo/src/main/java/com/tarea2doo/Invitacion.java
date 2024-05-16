@@ -11,6 +11,7 @@ public class Invitacion{
     private Instant hora;
     private Reunion reunion;
     private Invitable invitable;
+    private Empleado DatosEmpleado;
 
     /**
      * Constructor de la clase Invitacion
@@ -22,6 +23,9 @@ public class Invitacion{
         this.hora = reunion.getHora();
         this.reunion = reunion;
         this.invitable = invitable;
+        if(invitable instanceof Empleado){
+            DatosEmpleado = (Empleado) invitable;
+        }
     }
 
     /**
@@ -46,5 +50,9 @@ public class Invitacion{
      */
     public Reunion getReunion() {
         return reunion; // Reunión a la que se invita
+    }
+
+    public Empleado getDatosEmpleado(){
+        return DatosEmpleado;
     }
 }

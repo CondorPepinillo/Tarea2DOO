@@ -11,9 +11,9 @@ public class Main {
         Empleado empleado1 = new Empleado("1","funlanito", "juarez"," fj@udec.cl");
         Empleado empleado2 = new Empleado("2","Pedro", "martinez"," pedroMar@hotmail.cl");
         Empleado empleado3 = new Empleado("3", "eduardo", "tapia", "eduTap@udec.cl");
-        Empleado empleado4 = new Empleado("1","funlanito", "juarez"," fj@udec.cl");
-        Empleado empleado5 = new Empleado("2","Pedro", "martinez"," pedroMar@hotmail.cl");
-        Empleado empleado6 = new Empleado("3", "eduardo", "tapia", "eduTap@udec.cl");
+        Empleado empleado4 = new Empleado("4","juanito", "juarez"," JJ@udec.cl");
+        Empleado empleado5 = new Empleado("5","alexis", "martinez"," AlexMar@hotmail.cl");
+        Empleado empleado6 = new Empleado("6", "chupete", "suazo", "PlanetaGOl@udec.cl");
 
         Departamento depa1 = new Departamento("depa1");
 
@@ -32,7 +32,9 @@ public class Main {
         LocalTime fin = LocalTime.of(14, 30);
         Duration duracion = Duration.between(inicio, fin);
 
-        ReunionPresencial reunion1 = new ReunionPresencial("401",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
+        ReunionVirtual reunion1 = new ReunionVirtual("zoom/10312i310/t/call.com",tipoReunion.MARKETING, hoy, horaPrevista, duracion);
+        Nota nota = new Nota("HOLA soy la Nota");
+        reunion1.getNotas().add(nota);
 
         empleado1.invitar(reunion1);
         empleado2.invitar(reunion1);
@@ -49,7 +51,7 @@ public class Main {
         List<Asistencia> asistencias = reunion1.obtenerAsistencias();
 
         reunion1.iniciar(asistencias);
-
+        System.out.println(nota.getContenido());
         System.out.println(reunion1.getTipoReunion());
         System.out.println(reunion1.getHora());
         System.out.println(reunion1.getInvitados());
@@ -86,5 +88,6 @@ public class Main {
 
         reunion1.finalizar();
         reunion1.calcularTiempoReal();
+        Informe informe = new Informe(reunion1, "D:/VisualStudio/INFORME.txt");
     }
 }

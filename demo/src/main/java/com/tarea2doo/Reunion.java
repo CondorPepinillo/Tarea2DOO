@@ -23,6 +23,7 @@ public abstract class Reunion {
     private List<Invitacion> invitados; // Lista de invitados a la reunión
     private List<Asistencia> asistencias; // Lista de asistencias a la reunión
     private List<Ausencia> ausencias; // Lista de ausencias a la reunión
+    private List<Nota> notas = new ArrayList<>();
 
     static long timestampini; // Timestamp de inicio de la reunión
     static long timestampfin; // Timestamp de fin de la reunión
@@ -162,6 +163,11 @@ public abstract class Reunion {
         System.out.println("Reunion finalizada a las: " + zonedDateTime); // Imprime la hora de fin de la reunión
     }
 
+    public Date getFecha(){
+        return fecha;
+    }
+
+
     /**
      * Devuelve la hora prevista de la reunión
      * @return
@@ -170,4 +176,19 @@ public abstract class Reunion {
         return horaPrevista; // Devuelve la hora prevista de la reunión
     }
 
+    public Duration getDuracionPrevista(){
+        return duracionPrevista;
+    }
+
+    public Instant getHoraInicio(){
+        return horaInicio;
+    }
+
+    public Instant getHoraFin(){
+        return horaFin;
+    }
+
+    public List<Nota> getNotas(){
+        return notas;
+    };
 }

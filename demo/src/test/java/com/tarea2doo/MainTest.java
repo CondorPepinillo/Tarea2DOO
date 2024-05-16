@@ -64,5 +64,10 @@ class MainTest {
 
         assertEquals("16,666668", String.format("%.6f", reunion1.obtenerPorcentajeAsistencia()));
     }
+    @Test
+    void Nota(){
+        Nota nota = new Nota("HOLA soy la Nota");
+        assertEquals("HOLA soy la Nota", nota.getContenido());
+    }
 
 }
